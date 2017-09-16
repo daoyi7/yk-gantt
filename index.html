@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>gantt</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #ccc;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .gantt-container {
+            overflow: scroll;
+            margin-bottom: 15px;
+        }
+        /* custom class */
+
+        .gantt .bar-milestone .bar-progress {
+            fill: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Interactive Gantt Chart entirely made in SVG!</h2>
+        <div class="gantt-container">
+            <svg id="gantt" width="400" height="600"></svg>
+        </div>
+
+        <button id="QuarterDay">Quarter Day</button>
+        <button id="HalfDay">Half Day</button>
+        <button id="Day">Day</button>
+        <button id="Week">Week</button>
+        <button id="Month">Month</button>
+    </div>
+
+
+    <script src="moment.min.js"></script>
+    <script src="snap.svg-min.js"></script>
+    <script src="frappe-gantt.min.js"></script>
+    <script src="axios.min.js"></script>
+    <script src="use.js"></script>
+    <script>
+        
+    </script>
+</body>
+
+</html>
