@@ -12,22 +12,12 @@ axios.get('hsz.json')
                 taskTime = parseInt((new Date(data.Tasks[t].Finish).getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay)
                 taskProgress = (parseInt((today.getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay) < 0) ? 0 : parseInt((today.getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay)
             taskArr[t] = []
-            taskArr[t].push(taskName , [0 , taskTime] , taskProgress)
+            taskArr[t].push(taskName , [0 , taskTime] , 3)
 
-
-            log(today.getTime() )
-            log(new Date(data.Tasks[t].Start).getTime())
+            for(let c = 0; c = data.Tasks[t].children.length; c++) {
+                log(c)
+            }
         }
-        log(taskArr)
-
-        // const names = [
-        //     ["Redesign website", [0, 7], 80],
-        //     ["Write new content", [1, 4], 5],
-        //     ["Apply new styles", [3, 6], 120],
-        //     ["Review", [7, 7], 77],
-        //     ["Deploy", [8, 9], 6],
-        //     ["Go Live!", [10, 10], 67]
-        // ]
 
         const tasks = taskArr.map(function(task, i) {
             // let today = new Date();
@@ -36,8 +26,10 @@ axios.get('hsz.json')
             // start.setDate(today.getDate() + name[1][0]);
             // end.setDate(today.getDate() + name[1][1]);
 
-            let start = data.StartDate
-                end = data.FinishDate
+            let start = new Date(new Date(data.StartDate).getFullYear(), new Date(data.StartDate).getMonth(), new Date(data.StartDate).getDate())
+                end = new Date(new Date(data.StartDate).getFullYear(), new Date(data.StartDate).getMonth(), new Date(data.StartDate).getDate())
+            start.setDate(today.getDate() + task[1][0]);
+            end.setDate(today.getDate() + task[1][1]);
 
             return {
                 start: start,
