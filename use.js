@@ -12,11 +12,14 @@ axios.get('hsz.json')
                 taskTime = parseInt((new Date(data.Tasks[t].Finish).getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay)
                 taskProgress = (parseInt((today.getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay) < 0) ? 0 : parseInt((today.getTime() - new Date(data.Tasks[t].Start).getTime()) / oneDay)
             taskArr[t] = []
-            taskArr[t].push(taskName , [0 , taskTime] , 3)
+            taskArr[t].push(taskName , [0 , taskTime] , parseInt((taskProgress / taskTime) * 100))
 
-            for(let c = 0; c = data.Tasks[t].children.length; c++) {
-                log(c)
-            }
+            log((new Date(data.Tasks[t].Finish).getTime() - new Date(data.Tasks[t].Start).getTime()))
+            log((today.getTime() - new Date(data.Tasks[t].Start).getTime()))
+            // log(parseInt((taskProgress / taskTime) * 100))
+            // for(let c = 0; c = data.Tasks[t].children.length; c++) {
+            //     log(c)
+            // }
         }
 
         const tasks = taskArr.map(function(task, i) {
